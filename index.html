@@ -353,7 +353,7 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
 <aside id="guide" aria-live="polite">
   <div class="g-head">
     <div class="g-face"><div id="g-face">MJ</div></div>
-    <div class="g-name">Megha's voice guide<small>Computer-generated voice</small></div>
+    <div class="g-name">Megha's voice guide<small>Recorded with a computer voice</small></div>
     <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   </div>
   <p id="caption"></p>
@@ -435,11 +435,21 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
     el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: sel === '#top' ? 'start' : 'center' });
     if (sel !== '#top' && sel !== '#contact') el.classList.add('spot');
   };
-  function say(text, done) {
+  const player = new Audio();
+  player.preload = 'auto';
+  function say(text, done, clip) {
     const mine = ++token;
-    clearTimeout(timer); if (synth) synth.cancel();
+    clearTimeout(timer); if (synth) synth.cancel(); player.pause();
     caption.textContent = text; speaking(true);
     const finish = () => { if (mine !== token) return; speaking(false); done && done(); };
+    // Recorded narration first; the browser's own voice only if the recording cannot play.
+    if (clip) {
+      player.onended = finish;
+      player.onerror = () => { if (mine === token) say(text, done); };
+      player.src = clip; player.currentTime = 0;
+      player.play().catch(() => { if (mine === token) say(text, done); });
+      return;
+    }
     if (!synth || !voice) { timer = setTimeout(finish, 1200 + text.length * 62); return; }  // no voice: timed captions
     queue = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];  // short pieces, long utterances get cut off in Chrome
     const next = () => {
@@ -459,11 +469,11 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
     $('#g-step').textContent = `${i + 1} of ${TOUR.length}`;
     $('#g-next').hidden = false;
     spot(TOUR[i][0]);
-    say(TOUR[i][1], () => { timer = setTimeout(() => show(i + 1), 650); });
+    say(TOUR[i][1], () => { timer = setTimeout(() => show(i + 1), 650); }, `assets/voice/tour${i}.m4a`);
   }
   function open() { guide.classList.add('on'); $('#launch').hidden = true; paused = false; $('#g-pause').textContent = 'Pause'; }
   function stop() {
-    token++; clearTimeout(timer); if (synth) synth.cancel();
+    token++; clearTimeout(timer); if (synth) synth.cancel(); player.pause();
     speaking(false); guide.classList.remove('on'); $('#launch').hidden = false;
     document.querySelectorAll('.spot').forEach((el) => el.classList.remove('spot'));
   }
@@ -473,17 +483,17 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
   $('#g-next').onclick = () => { paused = false; $('#g-pause').textContent = 'Pause'; show(step + 1); };
   $('#g-pause').onclick = () => {
     paused = !paused; $('#g-pause').textContent = paused ? 'Resume' : 'Pause';
-    if (paused) { token++; clearTimeout(timer); if (synth) synth.cancel(); speaking(false); }
+    if (paused) { token++; clearTimeout(timer); if (synth) synth.cancel(); player.pause(); speaking(false); }
     else if (mode === 'tour') show(step); else ask(step);
   };
   function ask(i) {
     open(); mode = 'qa'; step = i;
     $('#g-step').textContent = QA[i][0]; $('#g-next').hidden = true;
     spot(QA[i][1]);
-    say(QA[i][2], () => document.querySelectorAll('.spot').forEach((el) => el.classList.remove('spot')));
+    say(QA[i][2], () => document.querySelectorAll('.spot').forEach((el) => el.classList.remove('spot')), `assets/voice/qa${i}.m4a`);
   }
   $('#questions').onclick = (e) => { const b = e.target.closest('button'); if (b) ask(+b.dataset.q); };
-  addEventListener('pagehide', () => synth && synth.cancel());
+  addEventListener('pagehide', () => { player.pause(); synth && synth.cancel(); });
 })();
 </script>
 </body>
