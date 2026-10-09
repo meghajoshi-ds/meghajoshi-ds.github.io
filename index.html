@@ -204,6 +204,23 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
   section { padding-top: 60px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+.aurora i { opacity: .3; animation: none; }
+.portrait .ring { animation-duration: 16s; }
+.role { color: var(--muted); font-size: clamp(17px, 2.2vw, 22px); font-weight: 500; }
+section h2 { margin-bottom: 28px; }
+.points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.points > div { padding: 24px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); }
+.points b { display: block; font: 700 20px/1.3 Sora, sans-serif; margin-bottom: 8px; }
+.points span { color: var(--muted); font-size: 16px; line-height: 1.55; }
+.chips.big { gap: 10px; }
+.chips.big span { font-size: 15.5px; padding: 8px 16px; }
+.project { margin-bottom: 20px; }
+.project p { font-size: 17px; }
+.facts { margin: 20px 0 4px; }
+.contact { padding: 90px 0 70px; }
+.contact .cta { margin-top: 8px; }
+footer { padding-bottom: 40px; }
+@media (max-width: 860px) { .points { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -217,7 +234,6 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
     <a class="link" href="#fit">Why me</a>
     <a class="link" href="#skills">Skills</a>
     <a class="link" href="#background">Background</a>
-    <a class="link" href="#ask">Ask me</a>
     <a class="link" href="#contact">Contact</a>
   </div>
 </nav>
@@ -227,27 +243,17 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
     <div>
       <div class="hello"><b></b>Open to graduate roles from January 2027</div>
       <h1>Hi, I'm <span class="grad">Megha Joshi</span></h1>
-      <div class="role">Aspiring <span id="typed">Data Analyst</span></div>
-      <p class="lead">MSc Data Science student at the University of Glasgow. I build analytics, machine learning and data pipeline projects in Python and SQL, and I test each one before I call it finished.</p>
+      <div class="role">Data analytics · Data engineering · Data science</div>
+      <p class="lead">MSc Data Science student at the University of Glasgow. I build data projects in Python and SQL, and I test each one before I call it finished.</p>
       <div class="cta">
         <button class="btn primary" id="play">▶ Play my welcome</button>
-        <a class="btn" href="#projects">See projects</a>
+        <a class="btn" href="#projects">See my work</a>
         <a class="btn" href="assets/Megha_Joshi_CV.pdf" download>Download CV</a>
       </div>
     </div>
     <div class="portrait" id="portrait">
       <div class="ring"></div>
       <div class="face"><img id="photo" src="assets/photo.jpg" alt="Portrait of Megha Joshi"></div>
-      <div class="orbit" aria-hidden="true"><span>Python</span><span>SQL</span><span>Machine Learning</span><span>Dashboards</span></div>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="marquee" aria-hidden="true"><div id="marquee"></div></div>
-    <div class="numbers" id="numbers">
-      <div class="num reveal" style="--a:#7c5cff;--z:#c44dff"><b data-n="98.3" data-s="%">98.3%</b><span>fewer false alerts in my transaction monitoring project</span></div>
-      <div class="num reveal" style="--a:#0fb57f;--z:#22b8cf"><b data-n="237">237</b><span>NHS trusts compared in one dashboard</span></div>
-      <div class="num reveal" style="--a:#ff8a3d;--z:#ff5fa2"><b data-n="67">67</b><span>automated tests checking SQL and Python agree</span></div>
-      <div class="num reveal" style="--a:#2f7bff;--z:#7c5cff"><b>Top 10%</b><span>of 10,246 teams in a Kaggle competition</span></div>
     </div>
   </div>
 </header>
@@ -255,19 +261,16 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
 <section id="projects">
   <div class="wrap">
     <div class="kicker">Selected work</div>
-    <h2>Projects I <span class="grad">built and tested</span></h2>
-    <p class="sub">Each one is public on GitHub with tests and documentation. Every number comes from the project's own outputs.</p>
+    <h2>My <span class="grad">projects</span></h2>
 
     <article class="project glass reveal" id="p-nhs" style="--c:linear-gradient(90deg,#2f7bff,#35e0c0);--glow:#2f7bff">
       <div class="shot"><img src="assets/nhs.jpg" alt="Screenshot of the NHS waiting times dashboard comparing England and Scotland A&E performance" loading="lazy"></div>
       <div>
         <div class="tagline">Analytics and dashboards</div>
         <h3>NHS Waiting Times Dashboard</h3>
-        <p>Five years of NHS England A&amp;E and referral-to-treatment data, combined with NHS Scotland data in one database. A patient picks a specialty and region and sees the fastest providers and how many weeks they could save by switching.</p>
+        <p>Five years of NHS data from England and Scotland in one dashboard. Pick a specialty and region to see the fastest providers.</p>
         <div class="facts"><div><b>237</b><span>trusts</span></div><div><b>141,504</b><span>treatment rows</span></div><div><b>p &lt; 0.001</b><span>decline in 4-hour A&amp;E performance</span></div></div>
-        <div class="chips"><span>Python</span><span>SQL</span><span>SQLite</span><span>pandas</span><span>Plotly Dash</span><span>Mann-Kendall test</span></div>
         <div class="links"><a class="btn primary small" href="https://nhs-waiting-times.onrender.com" target="_blank" rel="noopener">Live dashboard</a><a class="btn small" href="https://github.com/meghajoshi-ds/nhs-waiting-times" target="_blank" rel="noopener">Code</a></div>
-        <p class="note">On free hosting, so it can take a minute to wake up.</p>
       </div>
     </article>
 
@@ -276,9 +279,8 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
       <div>
         <div class="tagline">Anomaly detection</div>
         <h3>AML Transaction Monitoring</h3>
-        <p>Four detection rules combined with an Isolation Forest on 60,059 synthetic transactions. False positives fell from 5,245 to 89 and all 139 planted laundering cases were still caught. I then tested what happens when a launderer changes behaviour to dodge the rules.</p>
+        <p>Rules plus an anomaly detection model cut false alerts by 98% while still catching every known case.</p>
         <div class="facts"><div><b>2.6% → 61%</b><span>alert precision</span></div><div><b>139 of 139</b><span>known cases caught</span></div><div><b>~1,290</b><span>analyst hours saved a year</span></div></div>
-        <div class="chips"><span>Python</span><span>SQL window functions</span><span>scikit-learn</span><span>pytest</span><span>GitHub Actions</span></div>
         <div class="links"><a class="btn primary small" href="https://meghajoshi-ds.github.io/AML-Transaction-Monitoring/" target="_blank" rel="noopener">Project page</a><a class="btn small" href="https://github.com/meghajoshi-ds/AML-Transaction-Monitoring" target="_blank" rel="noopener">Code</a></div>
       </div>
     </article>
@@ -288,67 +290,32 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
       <div>
         <div class="tagline">Machine learning</div>
         <h3>Credit Risk Scorecard</h3>
-        <p>Logistic regression and LightGBM models predicting loan default on 163,987 Lending Club loans. I found that interest rate leaks the answer, removed it, then validated on a later year of loans. Ranking held up, but predicted default rates came out 6 to 7 points too low, so the model would need recalibrating before use.</p>
+        <p>A loan default model, tested on a later year of loans to see how well it really holds up.</p>
         <div class="facts"><div><b>0.696</b><span>AUC on later-year loans</span></div><div><b>396,030</b><span>loans in the time-split test</span></div><div><b>7</b><span>characteristics in the scorecard</span></div></div>
-        <div class="chips"><span>Python</span><span>LightGBM</span><span>SHAP</span><span>WoE / IV</span><span>Streamlit</span></div>
         <div class="links"><a class="btn primary small" href="https://credit-risk-scorecard-9skv.onrender.com" target="_blank" rel="noopener">Live demo</a><a class="btn small" href="https://github.com/meghajoshi-ds/credit-risk-scorecard" target="_blank" rel="noopener">Code</a></div>
-        <p class="note">On free hosting, so it can take a minute to wake up.</p>
       </div>
     </article>
-    <p class="sub" style="margin:0">Also: an <a href="https://meghajoshi-ds.github.io/IV_Dashboard/" target="_blank" rel="noopener">interactive multiview dashboard</a> from my Information Visualisation coursework.</p>
   </div>
 </section>
 
 <section id="fit">
   <div class="wrap">
     <div class="kicker">Why hire me</div>
-    <h2>What you get <span class="grad">on day one</span></h2>
-    <p class="sub">Four things I already do, each with proof you can open and check.</p>
-    <div class="why">
-      <a class="why-card reveal" style="--a:#7c5cff;--z:#c44dff" href="https://github.com/meghajoshi-ds/AML-Transaction-Monitoring" target="_blank" rel="noopener">
-        <span class="why-num">67</span><span class="why-unit">automated tests</span>
-        <h3>I test before I ship</h3>
-        <p>My transaction monitoring project has a 67-test suite that runs in CI and checks that the SQL and Python versions flag exactly the same transactions.</p>
-        <span class="why-link">See the tests <b>→</b></span>
-      </a>
-      <a class="why-card reveal" style="--a:#ff8a3d;--z:#ff5fa2" href="https://github.com/meghajoshi-ds/credit-risk-scorecard" target="_blank" rel="noopener">
-        <span class="why-num">396k</span><span class="why-unit">loans in my time-split test</span>
-        <h3>I question my own results</h3>
-        <p>In the credit risk project I found one feature was leaking the answer, removed it, then tested on a later year of loans to see how the model held up.</p>
-        <span class="why-link">See the validation <b>→</b></span>
-      </a>
-      <a class="why-card reveal" style="--a:#0fb57f;--z:#22b8cf" href="https://nhs-waiting-times.onrender.com" target="_blank" rel="noopener">
-        <span class="why-num">1,290</span><span class="why-unit">analyst hours saved a year</span>
-        <h3>I explain it in plain terms</h3>
-        <p>I report results the way a manager needs them: hours saved for an analyst team, or how many weeks a patient could save by switching hospital.</p>
-        <span class="why-link">Try the dashboard <b>→</b></span>
-      </a>
-      <a class="why-card reveal" style="--a:#2f7bff;--z:#7c5cff" href="#contact">
-        <span class="why-num">3</span><span class="why-unit">projects, public and live</span>
-        <h3>I finish what I start</h3>
-        <p>Each project is complete, documented and running online. I can work full-time from January 2027.</p>
-        <span class="why-link">Get in touch <b>→</b></span>
-      </a>
+    <h2>Three things <span class="grad">I do well</span></h2>
+    <div class="points">
+      <div class="reveal"><b>I test my work.</b><span>67 automated tests check my transaction monitoring project.</span></div>
+      <div class="reveal"><b>I check my own results.</b><span>I validate models on later data before trusting them.</span></div>
+      <div class="reveal"><b>I explain things simply.</b><span>I report results in terms a manager can use, like hours saved.</span></div>
     </div>
   </div>
 </section>
 
 <section id="skills">
   <div class="wrap">
-    <div class="kicker">Toolkit</div>
+    <div class="kicker">Skills</div>
     <h2>What I <span class="grad">work with</span></h2>
-    <p class="sub">Used in the projects above and in my coursework.</p>
-    <div class="cols">
-      <div class="panel glass reveal">
-        <div class="skill"><b>Programming</b><div class="chips"><span>Python</span><span>SQL</span><span>Java</span><span>C</span></div></div>
-        <div class="skill"><b>Data analysis</b><div class="chips"><span>pandas</span><span>NumPy</span><span>SciPy</span><span>statsmodels</span><span>Hypothesis testing</span><span>Time series</span><span>Excel</span></div></div>
-        <div class="skill" style="margin:0"><b>Dashboards</b><div class="chips"><span>Plotly Dash</span><span>Streamlit</span><span>matplotlib</span></div></div>
-      </div>
-      <div class="panel glass reveal">
-        <div class="skill"><b>Machine learning</b><div class="chips"><span>scikit-learn</span><span>LightGBM</span><span>PyTorch</span><span>SHAP</span><span>Isolation Forest</span><span>Out-of-time validation</span></div></div>
-        <div class="skill"><b>Data engineering</b><div class="chips"><span>ETL pipelines</span><span>SQLite</span><span>MySQL</span><span>PySpark</span><span>Hadoop (coursework)</span><span>Window functions</span></div></div>
-        <div class="skill" style="margin:0"><b>Tools</b><div class="chips"><span>Git</span><span>GitHub Actions</span><span>pytest</span><span>Jupyter</span><span>Azure (AZ-900)</span></div></div>
-      </div>
+    <div class="panel glass reveal">
+      <div class="chips big"><span>Python</span><span>SQL</span><span>pandas</span><span>scikit-learn</span><span>LightGBM</span><span>PySpark</span><span>Plotly Dash</span><span>Streamlit</span><span>Statistics</span><span>ETL pipelines</span><span>pytest</span><span>Git</span><span>Azure (AZ-900)</span></div>
     </div>
   </div>
 </section>
@@ -356,44 +323,33 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
 <section id="background">
   <div class="wrap">
     <div class="kicker">Background</div>
-    <h2>From firmware <span class="grad">to data</span></h2>
-    <p class="sub">I came to data science from embedded systems engineering, where code has to be tested before it ships.</p>
+    <h2>My <span class="grad">background</span></h2>
     <div class="cols">
       <div class="panel glass reveal">
         <h3>Education and work</h3>
         <ul class="timeline">
-          <li><time>2025 to 2027</time><b>MSc Data Science</b><span>University of Glasgow. Dissertation on natural language processing, knowledge graphs and relation extraction.</span></li>
-          <li><time>Dec 2024 to Jun 2025</time><b>Junior Embedded Engineer</b><span>Radius Synergies International, Noida. Firmware in Embedded C for utility meters, plus testing, documentation and QA reports.</span></li>
-          <li><time>2020 to 2024</time><b>B.E. Computer Science and Engineering</b><span>Chandigarh University, India.</span></li>
+          <li><time>2025 to 2027</time><b>MSc Data Science</b><span>University of Glasgow</span></li>
+          <li><time>Dec 2024 to Jun 2025</time><b>Junior Embedded Engineer</b><span>Radius Synergies International, India</span></li>
+          <li><time>2020 to 2024</time><b>B.E. Computer Science and Engineering</b><span>Chandigarh University, India</span></li>
         </ul>
       </div>
       <div class="panel glass reveal" id="awards">
         <h3>Achievements</h3>
         <ul class="timeline">
-          <li><b>🥇 CodeOlympics 2026 Gold Medal</b><span>1st place with Team 29, Glasgow University Tech Society.</span></li>
-          <li><b>🥉 Kaggle Bronze Medal</b><span>Ranked 1,007th of 10,246 teams in the Kaggriculture competition.</span></li>
-          <li><b>📄 IEEE Xplore publication</b><span>Peer-reviewed paper on NFTs and digital ownership, 2024.</span></li>
-          <li><b>☁️ Microsoft Azure Fundamentals</b><span>AZ-900 certified.</span></li>
+          <li><b>🥇 CodeOlympics 2026 Gold Medal</b><span>1st place, Glasgow University Tech Society</span></li>
+          <li><b>🥉 Kaggle Bronze Medal</b><span>Top 10% of 10,246 teams</span></li>
+          <li><b>📄 IEEE Xplore publication</b><span>Peer-reviewed paper, 2024</span></li>
+          <li><b>☁️ Microsoft Azure Fundamentals</b><span>AZ-900 certified</span></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="ask">
-  <div class="wrap">
-    <div class="kicker">Quick answers</div>
-    <h2>Ask me <span class="grad">something</span></h2>
-    <p class="sub">Tap a question and the voice guide answers it.</p>
-    <div class="ask" id="questions"></div>
-  </div>
-</section>
-
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="kicker">Contact</div>
-    <h2>Have a role I <span class="grad">might fit?</span></h2>
-    <p>Email is the best way to reach me. My code is on GitHub and my background is on LinkedIn.</p>
+    <h2>Let's <span class="grad">talk</span></h2>
     <div class="cta">
       <a class="btn primary" href="mailto:megha2702joshi@gmail.com">megha2702joshi@gmail.com</a>
       <a class="btn" href="https://linkedin.com/in/megha-joshi-3895211a9" target="_blank" rel="noopener">LinkedIn</a>
@@ -403,7 +359,6 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
 </section>
 <footer><div class="wrap">Megha Joshi · Glasgow, UK</div></footer>
 
-<button class="btn primary" id="launch">▶ Welcome</button>
 <aside id="guide" aria-live="polite">
   <div class="g-head">
     <div class="g-face"><div id="g-face">MJ</div></div>
@@ -429,20 +384,7 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
   photo.addEventListener('load', () => { $('#g-face').innerHTML = `<img src="${photo.src}" alt="">`; });
   if (photo.complete && !photo.naturalWidth) noPhoto();
 
-  /* rotating role, tool marquee, progress bar, reveals, counters */
-  const roles = ['Data Analyst', 'Data Engineer', 'Data Scientist'];
-  const typed = $('#typed');
-  if (!calm) {
-    let r = 0, n = roles[0].length, dir = -1;
-    setInterval(() => {
-      n += dir;
-      if (n < 0) { r = (r + 1) % roles.length; dir = 1; n = 0; }
-      if (n > roles[r].length + 14) dir = -1;
-      typed.textContent = roles[r].slice(0, Math.min(n, roles[r].length)) || '​';
-    }, 85);
-  }
-  const tools = ['Python', 'SQL', 'pandas', 'scikit-learn', 'LightGBM', 'PySpark', 'Plotly Dash', 'Streamlit', 'PyTorch', 'pytest', 'GitHub Actions', 'Azure'];
-  $('#marquee').innerHTML = [...tools, ...tools].map((t) => `<span>${t}</span>`).join('');
+  /* progress bar and reveals */
   addEventListener('scroll', () => { $('#progress').style.width = (100 * scrollY / (document.documentElement.scrollHeight - innerHeight)) + '%'; }, { passive: true });
   const io = new IntersectionObserver((es) => es.forEach((e) => {
     if (!e.isIntersecting) return;
@@ -459,15 +401,6 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
   const TOUR = [
     ['#top', "Hi, I'm Megha Joshi. Welcome to my portfolio. I'm studying for my Master's in data science at the University of Glasgow. Have a look around, and get in touch if you would like to talk. Thank you for visiting."],
   ];
-  const QA = [
-    ['What are you looking for?', '#contact', "A graduate role in data analytics, data engineering or data science. I can work full time from January 2027."],
-    ['Which project should I look at first?', '#p-aml', "Start with the anti money laundering project. It shows the whole process: rules written in SQL, a machine learning model on top, a test suite, and a check of what happens when someone tries to get around it."],
-    ['What tools do you use most?', '#skills', "Python and SQL every day. For analysis I use pandas and statsmodels. For modelling, scikit-learn and LightGBM. For dashboards, Plotly Dash and Streamlit."],
-    ['What did you do before data science?', '#background', "I was a junior embedded engineer at Radius Synergies in India, writing firmware in C for utility meters and testing it before deployment."],
-    ['How do I contact you?', '#contact', "Email is best. The address is megha2702joshi at gmail dot com, and the button on this page opens a new message."],
-  ];
-  $('#questions').innerHTML = QA.map((q, i) => `<button data-q="${i}">${q[0]}</button>`).join('');
-
   const guide = $('#guide'), caption = $('#caption'), portrait = $('#portrait');
   const synth = 'speechSynthesis' in window ? speechSynthesis : null;
   let voice = null, queue = [], step = -1, mode = 'tour', paused = false, token = 0, timer = null;
@@ -521,28 +454,21 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
     spot(TOUR[i][0]);
     say(TOUR[i][1], () => { timer = setTimeout(() => show(i + 1), 650); }, `assets/voice/tour${i}.m4a`);
   }
-  function open() { guide.classList.add('on'); $('#launch').hidden = true; paused = false; $('#g-pause').textContent = 'Pause'; }
+  function open() { guide.classList.add('on'); paused = false; $('#g-pause').textContent = 'Pause'; }
   function stop() {
     token++; clearTimeout(timer); if (synth) synth.cancel(); player.pause();
-    speaking(false); guide.classList.remove('on'); $('#launch').hidden = false;
+    speaking(false); guide.classList.remove('on');
     document.querySelectorAll('.spot').forEach((el) => el.classList.remove('spot'));
   }
   const startTour = () => { open(); show(0); };
-  $('#play').onclick = startTour; $('#launch').onclick = startTour;
+  $('#play').onclick = startTour;
   $('#g-stop').onclick = stop;
   $('#g-next').onclick = () => { paused = false; $('#g-pause').textContent = 'Pause'; show(step + 1); };
   $('#g-pause').onclick = () => {
     paused = !paused; $('#g-pause').textContent = paused ? 'Resume' : 'Pause';
     if (paused) { token++; clearTimeout(timer); if (synth) synth.cancel(); player.pause(); speaking(false); }
-    else if (mode === 'tour') show(step); else ask(step);
+    else show(step);
   };
-  function ask(i) {
-    open(); mode = 'qa'; step = i;
-    $('#g-step').textContent = QA[i][0]; $('#g-next').hidden = true;
-    spot(QA[i][1]);
-    say(QA[i][2], () => document.querySelectorAll('.spot').forEach((el) => el.classList.remove('spot')), `assets/voice/qa${i}.m4a`);
-  }
-  $('#questions').onclick = (e) => { const b = e.target.closest('button'); if (b) ask(+b.dataset.q); };
   addEventListener('pagehide', () => { player.pause(); synth && synth.cancel(); });
 })();
 </script>
