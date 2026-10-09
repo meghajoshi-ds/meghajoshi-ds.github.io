@@ -204,7 +204,17 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
   section { padding-top: 60px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
-.aurora i { opacity: .3; animation: none; }
+.aurora i { opacity: .42; animation-duration: 40s; }
+.numbers { margin-top: 44px; }
+.why3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.why3 .why-card { padding: 26px; }
+.why3 .why-num { font-size: clamp(44px, 5vw, 62px); }
+.why3 .why-card h3 { font-size: 22px; margin: 18px 0 8px; }
+.why3 .why-card p { font-size: 15.5px; }
+.skills3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.skills3 .panel h3 { font-size: 18px; margin-bottom: 14px; }
+.project .chips { margin-top: 4px; }
+@media (max-width: 860px) { .why3, .skills3 { grid-template-columns: 1fr; } }
 .portrait .ring { animation-duration: 16s; }
 .role { color: var(--muted); font-size: clamp(17px, 2.2vw, 22px); font-weight: 500; }
 section h2 { margin-bottom: 28px; }
@@ -256,6 +266,14 @@ footer { padding-bottom: 40px; }
       <div class="face"><img id="photo" src="assets/photo.jpg" alt="Portrait of Megha Joshi"></div>
     </div>
   </div>
+  <div class="wrap">
+    <div class="numbers" id="numbers">
+      <div class="num reveal" style="--a:#7c5cff;--z:#c44dff"><b data-n="98.3" data-s="%">98.3%</b><span>fewer false alerts in my monitoring project</span></div>
+      <div class="num reveal" style="--a:#0fb57f;--z:#22b8cf"><b data-n="237">237</b><span>NHS trusts in one dashboard</span></div>
+      <div class="num reveal" style="--a:#ff8a3d;--z:#ff5fa2"><b data-n="67">67</b><span>automated tests on my code</span></div>
+      <div class="num reveal" style="--a:#2f7bff;--z:#7c5cff"><b>Top 10%</b><span>of 10,246 teams on Kaggle</span></div>
+    </div>
+  </div>
 </header>
 
 <section id="projects">
@@ -268,8 +286,9 @@ footer { padding-bottom: 40px; }
       <div>
         <div class="tagline">Analytics and dashboards</div>
         <h3>NHS Waiting Times Dashboard</h3>
-        <p>Five years of NHS data from England and Scotland in one dashboard. Pick a specialty and region to see the fastest providers.</p>
+        <p>Five years of NHS data from England and Scotland in one dashboard. Pick a specialty and region to see the fastest providers and how many weeks you could save.</p>
         <div class="facts"><div><b>237</b><span>trusts</span></div><div><b>141,504</b><span>treatment rows</span></div><div><b>p &lt; 0.001</b><span>decline in 4-hour A&amp;E performance</span></div></div>
+        <div class="chips"><span>Python</span><span>SQL</span><span>pandas</span><span>Plotly Dash</span></div>
         <div class="links"><a class="btn primary small" href="https://nhs-waiting-times.onrender.com" target="_blank" rel="noopener">Live dashboard</a><a class="btn small" href="https://github.com/meghajoshi-ds/nhs-waiting-times" target="_blank" rel="noopener">Code</a></div>
       </div>
     </article>
@@ -279,8 +298,9 @@ footer { padding-bottom: 40px; }
       <div>
         <div class="tagline">Anomaly detection</div>
         <h3>AML Transaction Monitoring</h3>
-        <p>Rules plus an anomaly detection model cut false alerts by 98% while still catching every known case.</p>
+        <p>Detection rules plus an anomaly detection model cut false alerts by 98% while still catching every known case. I also tested how it copes when someone tries to dodge the rules.</p>
         <div class="facts"><div><b>2.6% → 61%</b><span>alert precision</span></div><div><b>139 of 139</b><span>known cases caught</span></div><div><b>~1,290</b><span>analyst hours saved a year</span></div></div>
+        <div class="chips"><span>Python</span><span>SQL</span><span>scikit-learn</span><span>pytest</span></div>
         <div class="links"><a class="btn primary small" href="https://meghajoshi-ds.github.io/AML-Transaction-Monitoring/" target="_blank" rel="noopener">Project page</a><a class="btn small" href="https://github.com/meghajoshi-ds/AML-Transaction-Monitoring" target="_blank" rel="noopener">Code</a></div>
       </div>
     </article>
@@ -290,8 +310,9 @@ footer { padding-bottom: 40px; }
       <div>
         <div class="tagline">Machine learning</div>
         <h3>Credit Risk Scorecard</h3>
-        <p>A loan default model, tested on a later year of loans to see how well it really holds up.</p>
+        <p>A loan default model with a simple points scorecard. I tested it on a later year of loans, which showed it would need recalibrating before real use.</p>
         <div class="facts"><div><b>0.696</b><span>AUC on later-year loans</span></div><div><b>396,030</b><span>loans in the time-split test</span></div><div><b>7</b><span>characteristics in the scorecard</span></div></div>
+        <div class="chips"><span>Python</span><span>LightGBM</span><span>SHAP</span><span>Streamlit</span></div>
         <div class="links"><a class="btn primary small" href="https://credit-risk-scorecard-9skv.onrender.com" target="_blank" rel="noopener">Live demo</a><a class="btn small" href="https://github.com/meghajoshi-ds/credit-risk-scorecard" target="_blank" rel="noopener">Code</a></div>
       </div>
     </article>
@@ -302,10 +323,25 @@ footer { padding-bottom: 40px; }
   <div class="wrap">
     <div class="kicker">Why hire me</div>
     <h2>Three things <span class="grad">I do well</span></h2>
-    <div class="points">
-      <div class="reveal"><b>I test my work.</b><span>67 automated tests check my transaction monitoring project.</span></div>
-      <div class="reveal"><b>I check my own results.</b><span>I validate models on later data before trusting them.</span></div>
-      <div class="reveal"><b>I explain things simply.</b><span>I report results in terms a manager can use, like hours saved.</span></div>
+    <div class="why3">
+      <a class="why-card reveal" style="--a:#7c5cff;--z:#c44dff" href="https://github.com/meghajoshi-ds/AML-Transaction-Monitoring" target="_blank" rel="noopener">
+        <span class="why-num">67</span><span class="why-unit">automated tests</span>
+        <h3>I test my work</h3>
+        <p>My transaction monitoring project is checked by a test suite that runs in CI.</p>
+        <span class="why-link">See the tests <b>→</b></span>
+      </a>
+      <a class="why-card reveal" style="--a:#ff8a3d;--z:#ff5fa2" href="https://github.com/meghajoshi-ds/credit-risk-scorecard" target="_blank" rel="noopener">
+        <span class="why-num">396k</span><span class="why-unit">loans in my time-split test</span>
+        <h3>I check my own results</h3>
+        <p>I validate models on a later year of data before I trust them.</p>
+        <span class="why-link">See the validation <b>→</b></span>
+      </a>
+      <a class="why-card reveal" style="--a:#0fb57f;--z:#22b8cf" href="https://nhs-waiting-times.onrender.com" target="_blank" rel="noopener">
+        <span class="why-num">1,290</span><span class="why-unit">analyst hours saved a year</span>
+        <h3>I explain things simply</h3>
+        <p>I report results in terms a manager can use, not just model scores.</p>
+        <span class="why-link">Try the dashboard <b>→</b></span>
+      </a>
     </div>
   </div>
 </section>
@@ -314,8 +350,10 @@ footer { padding-bottom: 40px; }
   <div class="wrap">
     <div class="kicker">Skills</div>
     <h2>What I <span class="grad">work with</span></h2>
-    <div class="panel glass reveal">
-      <div class="chips big"><span>Python</span><span>SQL</span><span>pandas</span><span>scikit-learn</span><span>LightGBM</span><span>PySpark</span><span>Plotly Dash</span><span>Streamlit</span><span>Statistics</span><span>ETL pipelines</span><span>pytest</span><span>Git</span><span>Azure (AZ-900)</span></div>
+    <div class="skills3">
+      <div class="panel glass reveal"><h3>Languages</h3><div class="chips big"><span>Python</span><span>SQL</span><span>Java</span><span>C</span></div></div>
+      <div class="panel glass reveal"><h3>Analysis and ML</h3><div class="chips big"><span>pandas</span><span>scikit-learn</span><span>LightGBM</span><span>Statistics</span><span>PySpark</span></div></div>
+      <div class="panel glass reveal"><h3>Dashboards and tools</h3><div class="chips big"><span>Plotly Dash</span><span>Streamlit</span><span>pytest</span><span>Git</span><span>Azure (AZ-900)</span></div></div>
     </div>
   </div>
 </section>
@@ -328,8 +366,8 @@ footer { padding-bottom: 40px; }
       <div class="panel glass reveal">
         <h3>Education and work</h3>
         <ul class="timeline">
-          <li><time>2025 to 2027</time><b>MSc Data Science</b><span>University of Glasgow</span></li>
-          <li><time>Dec 2024 to Jun 2025</time><b>Junior Embedded Engineer</b><span>Radius Synergies International, India</span></li>
+          <li><time>2025 to 2027</time><b>MSc Data Science</b><span>University of Glasgow. Dissertation on NLP and knowledge graphs.</span></li>
+          <li><time>Dec 2024 to Jun 2025</time><b>Junior Embedded Engineer</b><span>Radius Synergies International, India. Firmware in C for utility meters, with testing and QA reports.</span></li>
           <li><time>2020 to 2024</time><b>B.E. Computer Science and Engineering</b><span>Chandigarh University, India</span></li>
         </ul>
       </div>
