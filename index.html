@@ -261,6 +261,10 @@ footer { padding-bottom: 40px; }
 .go i { font-style: normal; transition: transform .25s; }
 .proof-card:hover .go i { transform: translateX(6px); }
 @media (max-width: 900px) { .proof { grid-template-columns: 1fr; } .viz { height: 170px; } }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags span { font: 600 12.5px Inter, sans-serif; padding: 4px 10px; border-radius: 99px; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.3); }
+.proof-card p { flex: 0 1 auto; }
+.proof-card .tags { flex: 1; align-content: flex-start; }
 </style>
 </head>
 <body>
@@ -351,8 +355,8 @@ footer { padding-bottom: 40px; }
 
 <section id="fit">
   <div class="wrap">
-    <div class="kicker">Why me</div>
-    <h2>Don't take my word for it. <span class="grad">See the proof.</span></h2>
+    <div class="kicker">Why hire me</div>
+    <h2>Three strengths, <span class="grad">each one proven</span></h2>
     <div class="proof">
 
       <a class="proof-card reveal" style="--a:#6d4dff;--z:#c44dff" href="https://github.com/meghajoshi-ds/AML-Transaction-Monitoring" target="_blank" rel="noopener">
@@ -362,19 +366,21 @@ footer { padding-bottom: 40px; }
           </svg>
           <div class="ring-label"><b>67/67</b><span>tests passing</span></div>
         </div>
-        <h3>I test my work</h3>
-        <p>Every rule in my transaction monitoring project is checked automatically.</p>
+        <h3>Reliable, tested code</h3>
+        <p>I write Python and SQL backed by automated tests. My transaction monitoring project runs a 67-test suite in CI, so every change is verified before it is merged.</p>
+        <div class="tags"><span>Python</span><span>SQL</span><span>pytest</span><span>CI/CD</span></div>
         <span class="go">See the tests <i>→</i></span>
       </a>
 
       <a class="proof-card reveal" style="--a:#ff7a3d;--z:#ff4d94" href="https://github.com/meghajoshi-ds/credit-risk-scorecard" target="_blank" rel="noopener">
         <div class="viz bars">
-          <div class="bar"><span>Easy test</span><div><i style="--w:100%"></i></div><b>0.718</b></div>
-          <div class="bar"><span>Real-world test</span><div><i style="--w:90%"></i></div><b>0.696</b></div>
-          <small>Same model, scored two ways. I report the honest one.</small>
+          <div class="bar"><span>Random split</span><div><i style="--w:100%"></i></div><b>0.718</b></div>
+          <div class="bar"><span>Out-of-time split</span><div><i style="--w:90%"></i></div><b>0.696</b></div>
+          <small>AUC for the same model. I report the realistic figure.</small>
         </div>
-        <h3>I check my own results</h3>
-        <p>I test models on a later year of data before I trust them.</p>
+        <h3>Rigorous model validation</h3>
+        <p>I build machine learning models and validate them properly, with out-of-time testing, data leakage checks and calibration, so the reported performance holds up in practice.</p>
+        <div class="tags"><span>Machine learning</span><span>LightGBM</span><span>Statistics</span><span>SHAP</span></div>
         <span class="go">See the validation <i>→</i></span>
       </a>
 
@@ -382,10 +388,11 @@ footer { padding-bottom: 40px; }
         <div class="viz bars">
           <div class="bar"><span>Before</span><div><i style="--w:100%"></i></div><b>5,245</b></div>
           <div class="bar"><span>After</span><div><i style="--w:2%"></i></div><b>89</b></div>
-          <small>False alerts an analyst has to review.</small>
+          <small>False positive alerts sent for analyst review.</small>
         </div>
-        <h3>I deliver results people can use</h3>
-        <p>98% fewer false alerts, with every known case still caught.</p>
+        <h3>Measurable business impact</h3>
+        <p>I combined SQL detection rules with an anomaly detection model to cut false positives by 98%, saving about 1,290 analyst hours a year without missing a known case.</p>
+        <div class="tags"><span>Anomaly detection</span><span>SQL</span><span>Business reporting</span></div>
         <span class="go">See the project <i>→</i></span>
       </a>
 
