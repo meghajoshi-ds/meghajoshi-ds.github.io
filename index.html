@@ -210,7 +210,7 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
       <div class="role">Graduate <span id="typed">Data Analyst</span></div>
       <p class="lead">Data science postgraduate at the University of Glasgow. I work in Python and SQL on analytics, machine learning and data pipelines, and I check my results on data the model has not seen before I trust them.</p>
       <div class="cta">
-        <button class="btn primary" id="play">▶ Play my welcome tour</button>
+        <button class="btn primary" id="play">▶ Play my welcome</button>
         <a class="btn" href="#projects">See projects</a>
         <a class="btn" href="assets/Megha_Joshi_CV.pdf" download>Download CV</a>
       </div>
@@ -349,7 +349,7 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
 </section>
 <footer><div class="wrap">Megha Joshi · Glasgow, UK</div></footer>
 
-<button class="btn primary" id="launch">▶ Welcome tour</button>
+<button class="btn primary" id="launch">▶ Welcome</button>
 <aside id="guide" aria-live="polite">
   <div class="g-head">
     <div class="g-face"><div id="g-face">MJ</div></div>
@@ -400,14 +400,7 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
 
   /* ---------- voice guide ---------- */
   const TOUR = [
-    ['#top', "Hi, I'm Megha Joshi. Welcome to my portfolio. I'm a data science postgraduate at the University of Glasgow, and I work mostly in Python and SQL. Let me show you around. It takes about a minute."],
-    ['#numbers', "Here are four numbers from my work. Ninety eight percent fewer false alerts in a transaction monitoring project. Two hundred and thirty seven NHS trusts compared in one dashboard. Sixty seven automated tests. And a top ten percent finish on Kaggle."],
-    ['#p-nhs', "This is my NHS waiting times dashboard. I combined five years of data from England and Scotland into one database. You pick a specialty and a region, and it shows the fastest providers and how many weeks you could save."],
-    ['#p-aml', "Next, anti money laundering. I combined four detection rules with an anomaly detection model. False positives fell from over five thousand to eighty nine, and every known case was still caught."],
-    ['#p-credit', "This is a credit risk scorecard. I trained the model on earlier years and tested it on a later year. That test showed the model would need recalibrating before a lender could use it, which a normal random split would have hidden."],
-    ['#skills', "These are the tools I use. Python and SQL for almost everything, with pandas, scikit-learn and LightGBM for modelling, and Plotly Dash and Streamlit for dashboards."],
-    ['#background', "Before data science, I wrote firmware for utility meters. That is where I learned to test everything before it ships. I'm now finishing my Master's in data science at Glasgow."],
-    ['#contact', "I'm looking for a graduate role in data analytics, data engineering or data science, and I can start full time from January 2027. If you have a role that might fit, my email is right here. Thank you for visiting."],
+    ['#top', "Hi, I'm Megha Joshi. Welcome to my portfolio. I'm a data science postgraduate at the University of Glasgow. Have a look around, and get in touch if you would like to talk. Thank you for visiting."],
   ];
   const QA = [
     ['What are you looking for?', '#contact', "A graduate role in data analytics, data engineering or data science. I can work full time from January 2027."],
@@ -465,9 +458,9 @@ footer { border-top: 1px solid var(--line); padding: 24px 0 110px; font-size: 14
   }
   function show(i) {
     step = i; mode = 'tour';
-    if (i >= TOUR.length) return stop();
-    $('#g-step').textContent = `${i + 1} of ${TOUR.length}`;
-    $('#g-next').hidden = false;
+    if (i >= TOUR.length) { timer = setTimeout(stop, 1800); return; }
+    $('#g-step').textContent = TOUR.length > 1 ? `${i + 1} of ${TOUR.length}` : '';
+    $('#g-next').hidden = TOUR.length < 2;
     spot(TOUR[i][0]);
     say(TOUR[i][1], () => { timer = setTimeout(() => show(i + 1), 650); }, `assets/voice/tour${i}.m4a`);
   }
